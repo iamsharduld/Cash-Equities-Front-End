@@ -75,7 +75,7 @@ Init.prototype.login = function(){
 
 
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-    xmlhttp.open("POST", "/json-handler");
+    xmlhttp.open("POST", "http://localhost:7890/validateuser",true);
     xmlhttp.setRequestHeader("Content-Type", "application/json");
     xmlhttp.send(JSON.stringify({client_code:userId1, password:passwd1}));
     
@@ -84,7 +84,7 @@ Init.prototype.login = function(){
 
             console.log(xmlhttp.responseText);
             var returnText = xmlhttp.responseText;
-            if(returnText.equals("success")){
+            if(returnText=="success"){
                 console.log("login success"); 
             }
             else{
