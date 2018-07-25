@@ -71,20 +71,26 @@ Init.prototype.login = function(){
 
     var userId1 = document.getElementById("userId").value;
     var passwd1 = document.getElementById("passwd").value;
-    console.log(userId,passwd);
+    console.log(userId1,passwd1);
 
-    
+
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
     xmlhttp.open("POST", "/json-handler");
     xmlhttp.setRequestHeader("Content-Type", "application/json");
-    xmlhttp.send(JSON.stringify({userId:userId1, passwd:passwd1}));
+    xmlhttp.send(JSON.stringify({client_code:userId1, password:passwd1}));
     
     xmlhttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
 
             console.log(xmlhttp.responseText);
-
-
+            var returnText = xmlhttp.responseText;
+            if(returnText.equals("success")){
+                console.log("login success"); 
+            }
+            else{
+                console.log("login failure");
+            }
+ 
 
         }
     }
