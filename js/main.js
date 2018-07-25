@@ -72,8 +72,8 @@ Init.prototype.login = function(){
     var userId1 = document.getElementById("userId").value;
     var passwd1 = document.getElementById("passwd").value;
     console.log(userId1,passwd1);
-
-
+    //document.location.replace("tws.html");
+    
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
     xmlhttp.open("POST", "http://localhost:7890/validateuser",true);
     xmlhttp.setRequestHeader("Content-Type", "application/json");
@@ -85,9 +85,11 @@ Init.prototype.login = function(){
             console.log(xmlhttp.responseText);
             var returnText = xmlhttp.responseText;
             if(returnText=="success"){
+                document.location.replace("tws.html");
                 console.log("login success"); 
             }
             else{
+                window.alert("Incorrect credentials");
                 console.log("login failure");
             }
  
