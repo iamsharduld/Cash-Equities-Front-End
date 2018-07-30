@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src = "js/display_securities.js"></script>
-  <script src = "buy_sell.html"></script>
+  <script src = "js/buy_sell.js"></script>
+  
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
 
@@ -104,22 +104,57 @@ tr:nth-child(even) {
     </div>
   </div>
 </nav><br>
-<center>
-  <input type="text" id="mySearch" placeholder="Search security " >&nbsp;&nbsp;
-  <input type="button" id="btnsearch" value="Search">
-</center>
-<table id="securities">
-    <tr>
-      <th>Company</th>
-      <th>Sector</th>
-      <th>Symbol</th>
-      <th>ISIN</th>
-    </tr>
-    
-  </table>
-  <br>
+ 
+  
+  
+<!-- The Modal -->
 
-</div>
+<h4> &nbsp; &nbsp; SECURITY DETAILS</h4>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6">
+            <p id="line1"></p>
+          </div>
+          <div class="col-sm-6">
+              <p id="line2"></p>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+              <p id="line3"></p>
+            </div>
+            <div class="col-sm-6">
+                <p id="line4"></p>
+            </div>
+          </div>
+          <form>
+              <div class="row">
+                <div class="col-sm-3">
+                    Price <input type="text" name="price" placeholder="299.00"> 
+                </div>
+                <div class="col-sm-3">
+                    Qty <input type="text" name="qty" placeholder="300"> 
+                </div>
+              <div class="col-sm-3">
+                  <input type="radio" name="buysell" value="buy" checked> Buy
+              </div>
+              <div class="col-sm-3">
+                  <input type="radio" name="buysell" value="sell" checked> Sell
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-1">
+                  <input type="submit" name="submit" value="Submit">
+              </div>
+              <div class="col-sm-1">
+                  <input type="submit" name="cancel" value="Cancel">
+              </div>
+            </div>
+          </form>
+      </div>
+ 
+  
 <p id="para"></p>
 </body>
 </html>
