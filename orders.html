@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Order Blotter</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -17,12 +17,14 @@
   <table class="table table-bordered" id="one">
     <thead>
       <tr>
+        <th>Order ID</th>
         <th>ISIN</th>
-        <th>Direction</th>
         <th>Company Name</th>
         <th>Quantity</th>
-        <th>Order ID</th>
+        <th>Direction</th>
         <th>Limit Price</th>
+        <th>Executed</th>
+        <th>Non Executed</th>
       </tr>
     </thead>
     <tbody>
@@ -34,13 +36,16 @@
         <td>Doe</td>
         <td>john@example.com</td>
 
-        
+        <td>Doe</td>
+        <td>john@example.com</td>
       </tr>
       <tr>
         <td>Mary</td>
         <td>Moe</td>
         <td>mary@example.com</td>
         <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
         <td>Doe</td>
         <td>john@example.com</td>
       </tr>
@@ -51,6 +56,8 @@
         <td>John</td>
         <td>Doe</td>
         <td>john@example.com</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
       </tr>
       
       
@@ -58,56 +65,11 @@
   </table>
 </div>
 
-
-<h2>Not Executed Orders</h2>
-  <div class="scrollit">         
-  <table class="table table-bordered" id="two">
-    <thead>
-      <tr>
-        <th>ISIN</th>
-        <th>Direction</th>
-        <th>Company Name</th>
-        <th>Quantity</th>
-        <th>Order ID</th>
-        <th>Limit Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-
-        
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-
-      
-      
-    </tbody>
-  </table>
-</div>
 <a href="tws.html">
-<button type="button" class="btn btn-default">Back</button>
-</a>
+    <button type="button" class="btn btn-default">Back</button>
+    </a>
+</div>
+
 
 
 
