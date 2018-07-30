@@ -68,9 +68,10 @@ var jsonarr= [
          }
         }
     };
+    /*
     for(i=0; i<jsonarr.length;i++){
       addRow(jsonarr[i]);
-    }
+    }*/
   }
     function search(){
         var x = document.getElementById("mySearch").placeholder;

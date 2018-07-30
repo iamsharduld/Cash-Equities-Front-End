@@ -109,13 +109,14 @@ tr:nth-child(even) {
   
 <!-- The Modal -->
 
-<h3> &nbsp; &nbsp; SECURITY DETAILS</h3>
-</div class = "row">
-<div>
-    
-</div>
-<div>
+
     <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>SECURITY DETAILS</h3>
+            </div>
+        </div>
+            
         <div class="col-sm-6">
         <div class="row">
           <div class="col-sm-6">
@@ -124,7 +125,7 @@ tr:nth-child(even) {
           <div class="col-sm-6">
               <h4 id="line2"></h4>
           </div>
-        </div>
+        </div><br>
         <div class="row">
             <div class="col-sm-4">
               <p id="line3"></p>
@@ -134,9 +135,38 @@ tr:nth-child(even) {
             </div>
             <div class="col-sm-4">
                     <p id="line5"></p>
-                </div>
+            </div>
 
-        </div>
+        </div><br>
+        <form>
+                <div class="row">
+                  <div class="col-sm-6">
+                      Price <input type="text" name="price" id="price" placeholder="299.00"> 
+                  </div>
+                  <div class="col-sm-6">
+                      Qty <input type="text" name="qty" id="qty" placeholder="300"> 
+                  </div>
+                  </div><br>
+                  <div class="row">
+                <div class="col-sm-6">
+                    <input type="radio" name="buysell" value="buy" checked onclick="direction(this.value)"> Buy
+                </div>
+                <div class="col-sm-6">
+                    <input type="radio" name="buysell" value="sell" checked onclick="direction(this.value)"> Sell
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-sm-2">
+                    <!--<input type="submit" name="submit" value="Submit">-->
+                    <button type="button" onclick="submitOrder()">Submit</button>
+                </div>
+                <div class="col-sm-2">
+                      <button type="button" onclick="cancelOrder()">Cancel</button>
+                </div>
+              </div>
+            </form>
+       
     </div>
     <div class="col-sm-6">
             <table id="qwerty">
@@ -152,33 +182,7 @@ tr:nth-child(even) {
 </div>
 <br>
 <div class="container">
-          <form>
-              <div class="row">
-                <div class="col-sm-3">
-                    Price <input type="text" name="price" id="price" placeholder="299.00"> 
-                </div>
-                <div class="col-sm-3">
-                    Qty <input type="text" name="qty" id="qty" placeholder="300"> 
-                </div>
-              <div class="col-sm-3">
-                  <input type="radio" name="buysell" value="buy" checked onclick="direction(this.value)"> Buy
-              </div>
-              <div class="col-sm-3">
-                  <input type="radio" name="buysell" value="sell" checked onclick="direction(this.value)"> Sell
-              </div>
-            </div>
-            <br>
-            <div class="row">
-              <div class="col-sm-1">
-                  <!--<input type="submit" name="submit" value="Submit">-->
-                  <button type="button" onclick="submitOrder()">Submit</button>
-              </div>
-              <div class="col-sm-1">
-                    <button type="button" onclick="cancelOrder()">Cancel</button>
-              </div>
-            </div>
-          </form>
-     
+         
         </div>
   
 <p id="para"></p>
