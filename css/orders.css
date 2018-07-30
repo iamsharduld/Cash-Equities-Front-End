@@ -1,0 +1,18 @@
+/*table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    display: inline-block;
+    background-color: black;
+}
+*/
+.scrollit {
+    overflow:scroll;
+    height:200px;
+}
+
+.table {
+    width: 75%;
+    padding: 100px;
+    
+}
