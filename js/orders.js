@@ -7,14 +7,6 @@ function Init(){
     var cell2 = row.insertCell(1);
     cell1.innerHTML = "NEW CELL1";
     cell2.innerHTML = "NEW CELL2";
-
-    var table = document.getElementById("one");
-    var row = table.insertRow(4);
-
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    cell1.innerHTML = "NEW CELL1";
-    cell2.innerHTML = "NEW CELL2";
     /*var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
     xmlhttp.open("GET", "http://localhost:7890/getmyorder",true);
     xmlhttp.setRequestHeader("Content-Type", "application/json");
