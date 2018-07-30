@@ -10,6 +10,44 @@
   <script src = "js/display_securities.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
+
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
@@ -74,15 +112,74 @@ tr:nth-child(even) {
 <table id="securities">
     <tr>
       <th>Company</th>
-      <th>Contact</th>
-      <th>Country</th>
+      <th>Sector</th>
+      <th>Symbol</th>
+      <th>ISIN</th>
     </tr>
     
   </table>
   <br>
   <button onclick="getData()">Get Data</button>
   
+  <!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h4>SECURITY DETAILS</h4>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <p id="line1"></p>
+        </div>
+        <div class="col-sm-6">
+            <p id="line2"></p>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-6">
+            <p id="line3"></p>
+          </div>
+          <div class="col-sm-6">
+              <p id="line4"></p>
+          </div>
+        </div>
+        <form>
+            <div class="row">
+              <div class="col-sm-3">
+                  Price <input type="text" name="price" placeholder="299.00"> 
+              </div>
+              <div class="col-sm-3">
+                  Qty <input type="text" name="qty" placeholder="300"> 
+              </div>
+            <div class="col-sm-3">
+                <input type="radio" name="buysell" value="buy" checked> Buy
+            </div>
+            <div class="col-sm-3">
+                <input type="radio" name="buysell" value="sell" checked> Sell
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-1">
+                <input type="submit" name="submit" value="Submit">
+            </div>
+            <div class="col-sm-1">
+                <input type="submit" name="cancel" value="Cancel">
+            </div>
+          </div>
+        </form>
+        
+
+    </div>
+  </div>
+
+</div>
+<p id="para"></p>
 </body>
 </html>
 
