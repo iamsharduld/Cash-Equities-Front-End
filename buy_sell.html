@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src = "js/display_securities.js"></script>
-  <script src = "buy_sell.html"></script>
+  <script src = "js/buy_sell.js"></script>
+  
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
 
@@ -104,22 +104,83 @@ tr:nth-child(even) {
     </div>
   </div>
 </nav><br>
-<center>
-  <input type="text" id="mySearch" placeholder="Search security " >&nbsp;&nbsp;
-  <input type="button" id="btnsearch" value="Search">
-</center>
-<table id="securities">
-    <tr>
-      <th>Company</th>
-      <th>Sector</th>
-      <th>Symbol</th>
-      <th>ISIN</th>
-    </tr>
-    
-  </table>
-  <br>
+ 
+  
+  
+<!-- The Modal -->
 
+<h3> &nbsp; &nbsp; SECURITY DETAILS</h3>
+</div class = "row">
+<div>
+    
 </div>
+<div>
+    <div class="container">
+        <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4 id="line1"></h4>
+          </div>
+          <div class="col-sm-6">
+              <h4 id="line2"></h4>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+              <p id="line3"></p>
+            </div>
+            <div class="col-sm-4">
+                <p id="line4"></p>
+            </div>
+            <div class="col-sm-4">
+                    <p id="line5"></p>
+                </div>
+
+        </div>
+    </div>
+    <div class="col-sm-6">
+            <table id="qwerty">
+                    <tr>
+                      <th>Buy Qty</th>
+                      <th>Buy Price</th>
+                      <th>Sell Price</th>
+                      <th>Sell Qty</th>
+                    </tr>
+                    
+                  </table>
+    </div>
+</div>
+<br>
+<div class="container">
+          <form>
+              <div class="row">
+                <div class="col-sm-3">
+                    Price <input type="text" name="price" id="price" placeholder="299.00"> 
+                </div>
+                <div class="col-sm-3">
+                    Qty <input type="text" name="qty" id="qty" placeholder="300"> 
+                </div>
+              <div class="col-sm-3">
+                  <input type="radio" name="buysell" value="buy" checked onclick="direction(this.value)"> Buy
+              </div>
+              <div class="col-sm-3">
+                  <input type="radio" name="buysell" value="sell" checked onclick="direction(this.value)"> Sell
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-1">
+                  <!--<input type="submit" name="submit" value="Submit">-->
+                  <button type="button" onclick="submitOrder()">Submit</button>
+              </div>
+              <div class="col-sm-1">
+                    <button type="button" onclick="cancelOrder()">Cancel</button>
+              </div>
+            </div>
+          </form>
+     
+        </div>
+  
 <p id="para"></p>
 </body>
 </html>
