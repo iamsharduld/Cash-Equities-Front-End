@@ -1,11 +1,32 @@
 
-var jsonarr =
+/**var jsonarr =
 [
     [
         {
             "price": 43636,
             "quantity": 4574,
             "client_order": "24345325",
+            "isin": "4",
+            "direction": "B"
+        },
+        {
+            "price": 3252,
+            "quantity": 3252,
+            "client_order": "2432",
+            "isin": "4",
+            "direction": "B"
+        },
+        {
+            "price": 3252,
+            "quantity": 3252,
+            "client_order": "2432",
+            "isin": "4",
+            "direction": "B"
+        },
+        {
+            "price": 3252,
+            "quantity": 3252,
+            "client_order": "2432",
             "isin": "4",
             "direction": "B"
         },
@@ -31,9 +52,23 @@ var jsonarr =
             "client_order": "24325",
             "isin": "4",
             "direction": "S"
+        },
+        {
+            "price": 3252,
+            "quantity": 3252,
+            "client_order": "2432",
+            "isin": "4",
+            "direction": "B"
+        },
+        {
+            "price": 3252,
+            "quantity": 3252,
+            "client_order": "2432",
+            "isin": "4",
+            "direction": "B"
         }
     ]
-]
+]*/
 var dir_value;
 function buysell(jsonObj){
         
@@ -71,11 +106,11 @@ function getParameter(theParam){
 function getSecurityValue(isin){
     var jsonObj;
     var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("POST", "http://localhost:7890/getsecurityvalue",true);
+        xmlhttp.open("POST", "http://localhost:7890/getsecurityvalue/"+isin,true);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
-        xmlhttp.send(JSON.stringify({isin:isin}));  
+        xmlhttp.send();  
 
-        xmlhttp.open("POST","http://localhost:7890/getsecurityvalue",true);
+        xmlhttp.open("GET","http://localhost:7890/getsecurityvalue",true);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
         xmlhttp.send();
         xmlhttp.onreadystatechange = function() {
@@ -84,6 +119,8 @@ function getSecurityValue(isin){
           //  document.getElementById("demo").innerHTML = myObj.name;
             return jsonObj[0].sec_value;
         }
+        else
+        return "404";
     };
     
 }
@@ -128,7 +165,7 @@ function direction(value){
 
 function getSecurityOrders(){
 
-    var jsonar,i=0 ; //read from response
+    var jsonarr,i=0 ; //read from response
         //connect to server
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", "http://localhost:7890/getoporder",true);
@@ -144,14 +181,26 @@ function getSecurityOrders(){
             document.getElementById("para").innerHTML = jsonarr.price;
          }
         }
+        else
+        document.getElementById("para").innerHTML = "error";
     };
-
-    for(i=0; i<2;i++){
-       // addRow(jsonarr[i]);
-        document.getElementById("para").innerHTML = i+" "+jsonarr[1][i].price;
-     }
+    /*document.getElementById("para").innerHTML = jsonarr[0].length;
+    for(i=0;i<5;i++){
+        addRow(jsonarr[0][i],jsonarr[1][i]);
+        //document.getElementById("para").innerHTML = i+" "+jsonarr[1][i].price;
+      
+     }*/
 }
 
+function addRow(buy,sell) {
+    var table = document.getElementById("qwerty");
+    var row= table.insertRow(1);
+    row.insertCell(0).innerHTML = buy.quantity;
+    row.insertCell(1).innerHTML = buy.price;
+    row.insertCell(2).innerHTML = sell.price;
+    row.insertCell(3).innerHTML = sell.quantity;
+  //  document.getElementById("securities").innerHTML = jsonObj.id;
+}
 window.onload = function(){
     window.buysell = new buysell();
   };
