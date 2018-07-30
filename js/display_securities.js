@@ -2,34 +2,34 @@
 
 var jsonarr= [
     {
-      "company" : "TITAN COMPANY LTD",
+      "company_name" : "TITAN COMPANY LTD",
     "sector": "FMCG",
     "symbol": "TITAN",
-    "ISIN": "INE280A01028"
+    "isin": "INE280A01028"
     },
     {
-      "company" : "EICHER MOTORS LTD",
+      "company_name" : "EICHER MOTORS LTD",
     "sector": "AUTO",
     "symbol": "EICHERMOT",
-    "ISIN": "INE066A01013"
+    "isin": "INE066A01013"
     },
     {
-      "company" : "BHARTI AIRTEL LTD",
+      "company_name" : "BHARTI AIRTEL LTD",
     "sector": "TELECOM",
     "symbol": "BHARATIARTL",
-    "ISIN": "INE397D01024"
+    "isin": "INE397D01024"
     },
     {
-      "company" : "MARUTI UDYOG LTD",
+      "company_name" : "MARUTI UDYOG LTD",
     "sector": "FMCG",
     "symbol": "TITAN",
-    "ISIN": "INE280A01028"
+    "isin": "INE280A01028"
     },
     {
-      "company" : "CIPLA LTD",
+      "company_name" : "CIPLA LTD",
     "sector": "FMCG",
     "symbol": "TITAN",
-    "ISIN": "INE280A01028"
+    "isin": "INE280A01028"
     }
     ]
 
@@ -41,17 +41,17 @@ var jsonarr= [
        // row.addEventListener("click",function() {
         //  window.location.href = "buy_sell.html?&json="+jsonObj});
         row.addEventListener("click",function() {
-          window.location.href = "buy_sell.html?&company="+jsonObj.company+"&sector="+jsonObj.sector+"&symbol="+jsonObj.symbol+"&isin="+jsonObj.ISIN});
-        row.insertCell(0).innerHTML = jsonObj.company;
+          window.location.href = "buy_sell.html?&company="+jsonObj.company_name+"&sector="+jsonObj.sector+"&symbol="+jsonObj.symbol+"&isin="+jsonObj.isin});
+        row.insertCell(0).innerHTML = jsonObj.company_name;
         row.insertCell(1).innerHTML = jsonObj.sector;
         row.insertCell(2).innerHTML = jsonObj.symbol;
-        row.insertCell(3).innerHTML = jsonObj.ISIN;
+        row.insertCell(3).innerHTML = jsonObj.isin;
       //  document.getElementById("securities").innerHTML = jsonObj.id;
     }
     
     function getData(){
     
-        var jsonObj,i ; //read from response
+        var jsonarr,i ; //read from response
         //connect to server
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", "http://localhost:7890/getsecurity",true);
@@ -62,14 +62,16 @@ var jsonarr= [
         if (this.readyState == 4 && this.status == 200) {
             jsonarr = JSON.parse(this.responseText);
           //  document.getElementById("demo").innerHTML = myObj.name;
+          for(i=0; i<jsonarr.length;i++){
+            addRow(jsonarr[i]);
+     
+         }
         }
     };
-        for(i=0; i<jsonarr.length;i++){
-           addRow(jsonarr[i]);
-    
-        }
+    for(i=0; i<jsonarr.length;i++){
+      addRow(jsonarr[i]);
     }
-
+  }
     function search(){
         var x = document.getElementById("mySearch").placeholder;
         //document.getElementById("demo").innerHTML = x;
