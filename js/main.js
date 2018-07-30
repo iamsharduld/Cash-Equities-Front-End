@@ -40,7 +40,7 @@
         }
     }
 
-    /*function showValidate(input) {
+    function showValidate(input) {
         var thisAlert = $(input).parent();
 
         $(thisAlert).addClass('alert-validate');
@@ -50,7 +50,7 @@
         var thisAlert = $(input).parent();
 
         $(thisAlert).removeClass('alert-validate');
-    }*/
+    }
     
     
 
@@ -73,6 +73,11 @@ Init.prototype.login = function(){
     var passwd1 = document.getElementById("passwd").value;
     console.log(userId1,passwd1);
     //document.location.replace("tws.html");
+
+
+
+    localStorage.setItem("loginDet",JSON.stringify(convert))
+
     
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
     xmlhttp.open("POST", "http://localhost:7890/validateuser",true);
@@ -84,6 +89,10 @@ Init.prototype.login = function(){
 
             console.log(xmlhttp.responseText);
             var returnText = xmlhttp.responseText;
+
+
+            localStorage.setItem("loginDet",JSON.stringify(client_code))
+
             if(returnText=="success"){
                 document.location.replace("tws.html");
                 console.log("login success"); 
