@@ -80,7 +80,7 @@ var jsonarr= [
         line3.innerHTML = "Symbol : " + jsonObj.symbol;
         line4.innerHTML = "ISIN : " + jsonObj.ISIN;
         
-        
+
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
          if (event.target == modal) {
@@ -94,3 +94,7 @@ var jsonarr= [
         }
     }
     }
+
+    window.onload = function(){
+      window.getData = new getData();
+    };
