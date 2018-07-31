@@ -76,11 +76,11 @@ Init.prototype.login = function(){
 
 
 
-    localStorage.setItem("loginDet",JSON.stringify(convert))
+    //localStorage.setItem("loginDet",JSON.stringify(convert))
 
     
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-    xmlhttp.open("POST", "http://localhost:7890/validateuser",true);
+    xmlhttp.open("POST", "http://localhost:8891/validateuser",true);
     xmlhttp.setRequestHeader("Content-Type", "application/json");
     xmlhttp.send(JSON.stringify({client_code:userId1, password:passwd1}));
     
