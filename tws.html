@@ -76,11 +76,19 @@ td, th {
     padding: 5px;
 }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
+#securities tr.header,#securities tr:hover {
+  background-color:#f1f1f1;
 }
-tr:hover{
-  background-color:azure;
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
 }
   </style>
 </head>
@@ -108,17 +116,18 @@ tr:hover{
   </div>
 </nav><br>
 <center>
-  <input type="text" id="mySearch" placeholder="Search security " >&nbsp;&nbsp;
-  <input type="button" id="btnsearch" value="Search">
+  <div class="container">
+    <input type="text" id="myInput" onkeyup="search()" placeholder="Search for securities.." title="Type in a name">
+    <div class="row">
+        <h4>Details for all securities are given below</h4>
+      </div><br>
+  </div>
 </center>
-<div class="container"><br>
-
-  <div class="row">
-    <h4>Details for all securities are given below</h4>
-  </div><br>
+<div class="container">
   <div class="row">
     <table id="securities">
-      <tr>
+      <tr class="header">
+        <th>SR No.</th>
         <th>Company</th>
         <th>Sector</th>
         <th>Symbol</th>

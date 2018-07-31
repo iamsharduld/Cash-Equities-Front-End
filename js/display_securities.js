@@ -1,6 +1,8 @@
 
 
-var jsonarr= [
+var jsonarr;
+/*
+[
     {
       "company_name" : "TITAN COMPANY LTD",
     "sector": "FMCG",
@@ -32,9 +34,9 @@ var jsonarr= [
     "isin": "INE280A01028"
     }
     ]
-
+*/
     
-    function addRow(jsonObj) {
+    function addRow(jsonObj,index) {
         var table = document.getElementById("securities");
         var row = table.insertRow(1);
         //row.addEventListener("click",function() {document.getElementById("para").innerHTML = jsonObj.display});
@@ -42,16 +44,17 @@ var jsonarr= [
         //  window.location.href = "buy_sell.html?&json="+jsonObj});
         row.addEventListener("click",function() {
           window.location.href = "buy_sell.html?&company="+jsonObj.company_name+"&sector="+jsonObj.sector+"&symbol="+jsonObj.symbol+"&isin="+jsonObj.isin});
-        row.insertCell(0).innerHTML = jsonObj.company_name;
-        row.insertCell(1).innerHTML = jsonObj.sector;
-        row.insertCell(2).innerHTML = jsonObj.symbol;
-        row.insertCell(3).innerHTML = jsonObj.isin;
+        row.insertCell(0).innerHTML = index;
+        row.insertCell(1).innerHTML = jsonObj.company_name;
+        row.insertCell(2).innerHTML = jsonObj.sector;
+        row.insertCell(3).innerHTML = jsonObj.symbol;
+        row.insertCell(4).innerHTML = jsonObj.isin;
       //  document.getElementById("securities").innerHTML = jsonObj.id;
     }
     
     function getData(){
     
-        var jsonarr,i ; //read from response
+        var i ; //read from response
         //connect to server
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", "http://localhost:7890/getsecurity",true);
@@ -63,19 +66,34 @@ var jsonarr= [
             jsonarr = JSON.parse(this.responseText);
           //  document.getElementById("demo").innerHTML = myObj.name;
           for(i=0; i<jsonarr.length;i++){
-            addRow(jsonarr[i]);
+            addRow(jsonarr[i],jsonarr.length-i);
      
          }
         }
     };
-    /*
-    for(i=0; i<jsonarr.length;i++){
-      addRow(jsonarr[i]);
+    
+   /* for(i=0; i<jsonarr.length;i++){
+      addRow(jsonarr[i],jsonarr.length-i);
     }*/
   }
+  
     function search(){
-        var x = document.getElementById("mySearch").placeholder;
-        //document.getElementById("demo").innerHTML = x;
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      //document.getElementById("para").innerHTML=filter;
+      table = document.getElementById("securities");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
 
     }
 
