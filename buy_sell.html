@@ -42,6 +42,10 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+#title{
+  background-color: #f1f1f1
+}
   </style>
 </head>
 <body>
@@ -74,13 +78,23 @@ tr:nth-child(even) {
 
 
     <div class="container">
-        <div class="row">
+        <div class="row" id="title">
             <div class="col-sm-12">
+              <center>
                 <h3>SECURITY DETAILS</h3>
+                </center>
             </div>
-        </div>
+        </div><br>
+        <div class="row" id="title">
+            <div class="col-sm-4">
+              <h4 id="line2"></h4>
+            </div>
+            <div class="col-sm-8">
+                <h4 id="line1"></h4>
+            </div>
+          </div><br>
             
-        <div class="col-sm-6">
+        <div class="col-sm-6" id="title">
         <div class="row">
           <div class="col-sm-6">
             <h4 id="line1"></h4>
@@ -102,7 +116,7 @@ tr:nth-child(even) {
 
         </div><br>
         <form>
-                <div class="row">
+                <div class="row" >
                   <div class="col-sm-6">
                       Price <input type="text" name="price" id="price" placeholder="299.00"> 
                   </div>
@@ -128,11 +142,12 @@ tr:nth-child(even) {
                       <button type="button" onclick="cancelOrder()">Cancel</button>
                 </div>
               </div>
+              <br>
             </form>
-       
+            
     </div>
     <div class="col-sm-6">
-            <table id="qwerty">
+            <table id="qwerty" >
                     <tr>
                       <th>Buy Qty</th>
                       <th>Buy Price</th>
