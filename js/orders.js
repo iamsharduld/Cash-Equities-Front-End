@@ -3,7 +3,7 @@ function Init(){
     
 
     //TEST CODE START
-
+    /*
     var tmp = [{
         order_id:1,
         isin:2,
@@ -120,13 +120,13 @@ function Init(){
         }
         //cnt += 1;
     }
-
+    */
 
     //TEST CODE END
 
 
 
-    /*var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
     xmlhttp.open("GET", "http://localhost:8891/getmyorder/A001",true);
     xmlhttp.setRequestHeader("Content-Type", "application/json");
     xmlhttp.send();
@@ -141,6 +141,7 @@ function Init(){
 
            
             var cnt=0;
+            console.log(returnText.length)
             for(var i =0; i<returnText.length;i++){
                 var obj = returnText[i];
                 console.log(obj)
@@ -154,16 +155,50 @@ function Init(){
                 var cell6 = row.insertCell(5);
                 var cell7 = row.insertCell(6);
                 var cell8 = row.insertCell(7);
+                var cell9 = row.insertCell(8);
                 cell1.innerHTML = obj.order_id;
                 cell2.innerHTML = obj.isin;
                 cell3.innerHTML = obj.company_name;
                 cell4.innerHTML = obj.quantity;
                 cell5.innerHTML = obj.direction;
                 cell6.innerHTML = obj.limit_price;
-                cell7.innerHTML = obj.executed;
-                cell8.innerHTML = obj.unexexcuted;
-                cnt += 1;
+                cell7.innerHTML = obj.unexexcuted;
+                for(var j=0; j< obj.executed.length;j++){
+                    obj1 = obj.executed[j];
+                    console.log(obj1)
+
+                    if(j==0){
+                        cell8.innerHTML = obj1.quantity;
+                        cell9.innerHTML = obj1.price;
+                        continue;
+                    }
+                    
+                    console.log(cnt,j)
+                    
+                    var row = table.insertRow(cnt+j+1);
+                    row.insertCell(0)
+                    row.insertCell(1)
+                    row.insertCell(2)
+                    row.insertCell(3)
+                    row.insertCell(4)
+                    row.insertCell(5)
+                    row.insertCell(6)
+                    
+                    var cell8 = row.insertCell(7);
+                    var cell9 = row.insertCell(8);
+                    
+
+                    cell8.innerHTML = obj1.quantity;
+                    cell9.innerHTML = obj1.price;
+
+                    //cnt+=1;
+
+
+
+                }
+                //cnt += 1;
             }
+
             
 
 
@@ -173,7 +208,7 @@ function Init(){
  
 
         }
-    }*/
+    }
 
 
 
