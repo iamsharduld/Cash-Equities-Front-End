@@ -1,6 +1,7 @@
 
 
-var jsonarr=
+var jsonarr;
+/*=
 
 [
     {
@@ -35,13 +36,11 @@ var jsonarr=
     }
     ]
 
-    
+    */
     function addRow(jsonObj,index) {
         var table = document.getElementById("securities");
         var row = table.insertRow(1);
-        //row.addEventListener("click",function() {document.getElementById("para").innerHTML = jsonObj.display});
-       // row.addEventListener("click",function() {
-        //  window.location.href = "buy_sell.html?&json="+jsonObj});
+       
         row.addEventListener("click",function() {
           window.location.href = "buy_sell.html?&company="+jsonObj.company_name+"&sector="+jsonObj.sector+"&symbol="+jsonObj.symbol+"&isin="+jsonObj.isin});
         row.insertCell(0).innerHTML = index;
@@ -57,7 +56,7 @@ var jsonarr=
         var i ; //read from response
         //connect to server
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", "http://localhost:7890/getsecurity",true);
+        xmlhttp.open("GET", "http://localhost:8891/getsecurity",true);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
         xmlhttp.send();  
 
@@ -71,10 +70,10 @@ var jsonarr=
          }
         }
     };
-    
+    /*
     for(i=0; i<jsonarr.length;i++){
       addRow(jsonarr[i],jsonarr.length-i);
-    }
+    }*/
   }
   
     function search(){
