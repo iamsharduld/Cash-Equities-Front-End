@@ -20,7 +20,12 @@ function Init(){
                     {
                         price:3,
                         quantity:4
+                    },
+                    {
+                        price:0,
+                        quantity:3
                     }
+
                 
             ]
         
@@ -43,9 +48,14 @@ function Init(){
                         quantity:4
                     },
                     {
-                        price:3,
-                        quantity:4
+                        price:4,
+                        quantity:5
+                    },
+                    {
+                        price:6,
+                        quantity:7
                     }
+                    
                 
             ]
         
@@ -66,8 +76,8 @@ function Init(){
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
         var cell7 = row.insertCell(6);
-        //var cell8 = row.insertCell(7);
-        //var cell9 = row.insertCell(8);
+        var cell8 = row.insertCell(7);
+        var cell9 = row.insertCell(8);
         cell1.innerHTML = obj.order_id;
         cell2.innerHTML = obj.isin;
         cell3.innerHTML = obj.company_name;
@@ -78,24 +88,32 @@ function Init(){
         for(var j=0; j< obj.executed.length;j++){
             obj1 = obj.executed[j];
             console.log(obj1)
+
+            if(j==0){
+                cell8.innerHTML = obj1.quantity;
+                cell9.innerHTML = obj1.price;
+                continue;
+            }
+            
+            console.log(cnt,j)
+            
+            var row = table.insertRow(cnt+j+1);
+            row.insertCell(0)
+            row.insertCell(1)
+            row.insertCell(2)
+            row.insertCell(3)
+            row.insertCell(4)
+            row.insertCell(5)
+            row.insertCell(6)
+            
             var cell8 = row.insertCell(7);
             var cell9 = row.insertCell(8);
+            
+
             cell8.innerHTML = obj1.quantity;
             cell9.innerHTML = obj1.price;
-            cnt+=1;
 
-            if(j!=obj.executed.length-1){
-
-                var row = table.insertRow(cnt+j+1);
-                row.insertCell(0)
-                row.insertCell(1)
-                row.insertCell(2)
-                row.insertCell(3)
-                row.insertCell(4)
-                row.insertCell(5)
-                row.insertCell(6)
-                //cnt+=1;
-            }
+            //cnt+=1;
 
 
 
