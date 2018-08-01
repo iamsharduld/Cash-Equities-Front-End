@@ -1,7 +1,7 @@
 
 
-var jsonarr;
-/*
+var jsonarr=
+
 [
     {
       "company_name" : "TITAN COMPANY LTD",
@@ -34,7 +34,7 @@ var jsonarr;
     "isin": "INE280A01028"
     }
     ]
-*/
+
     
     function addRow(jsonObj,index) {
         var table = document.getElementById("securities");
@@ -72,9 +72,9 @@ var jsonarr;
         }
     };
     
-   /* for(i=0; i<jsonarr.length;i++){
+    for(i=0; i<jsonarr.length;i++){
       addRow(jsonarr[i],jsonarr.length-i);
-    }*/
+    }
   }
   
     function search(){
