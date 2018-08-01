@@ -1,74 +1,3 @@
-
-var jsonarr =
-[
-    [
-        {
-            "price": 43636,
-            "quantity": 4574,
-            "client_order": "24345325",
-            "isin": "4",
-            "direction": "B"
-        },
-        {
-            "price": 3252,
-            "quantity": 3252,
-            "client_order": "2432",
-            "isin": "4",
-            "direction": "B"
-        },
-        {
-            "price": 3252,
-            "quantity": 3252,
-            "client_order": "2432",
-            "isin": "4",
-            "direction": "B"
-        },
-        {
-            "price": 3252,
-            "quantity": 3252,
-            "client_order": "2432",
-            "isin": "4",
-            "direction": "B"
-        },
-        {
-            "price": 3252,
-            "quantity": 3252,
-            "client_order": "2432",
-            "isin": "4",
-            "direction": "B"
-        }
-    ],
-    [
-        {
-            "price": 2,
-            "quantity": 3,
-            "client_order": null,
-            "isin": "4",
-            "direction": "1"
-        },
-        {
-            "price": 436,
-            "quantity": 45,
-            "client_order": "24325",
-            "isin": "4",
-            "direction": "S"
-        },
-        {
-            "price": 3252,
-            "quantity": 3252,
-            "client_order": "2432",
-            "isin": "4",
-            "direction": "B"
-        },
-        {
-            "price": 3252,
-            "quantity": 3252,
-            "client_order": "2432",
-            "isin": "4",
-            "direction": "B"
-        }
-    ]
-]
 var dir_value;
 function buysell(jsonObj){
         
@@ -143,13 +72,6 @@ function submitOrder(){
         xmlhttp.send(JSON.stringify({id:id,client_code:client_code,isin:isin,
                 trade_time:trade_time,quantity:quantity,direction:dir_value,limit_price:limit_price})); 
 
-    //document.getElementById("para").innerHTML = id + client_code+isin+trade_time+quantity+dir_value+limit_price;
-       /* xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var jsonObj = JSON.parse(this.responseText);
-          //  document.getElementById("demo").innerHTML = myObj.name;
-        }
-    };*/
 }
 
 function cancelOrder(){
@@ -174,22 +96,16 @@ function getSecurityOrders(){
         if (this.readyState == 4 && this.status == 200) {
             jsonarr = JSON.parse(this.responseText);
             console.log(jsonarr)
-            
-            //document.getElementById("para").innerHTML =jsonarr.Sell[0].price;
+         
           for(i=0; i<5;i++){
             addRow(jsonarr.Sell[i],jsonarr.Buy[i]);
             //document.getElementById("para").innerHTML = jsonarr[0][0];
          }
         }
-        //else
-        //document.getElementById("para").innerHTML = "error";
+        else
+            document.getElementById("para").innerHTML = "error";
     };
-    //document.getElementById("para").innerHTML = jsonarr[0].length;
-    for(i=0;i<5;i++){
-        //addRow(jsonarr[0][i],jsonarr[1][i]);
-        //document.getElementById("para").innerHTML = i+" "+jsonarr.price;
-      
-     }
+    
 }
 
 function addRow(buy,sell) {

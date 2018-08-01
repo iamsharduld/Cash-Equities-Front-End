@@ -40,9 +40,7 @@ var jsonarr;
     function addRow(jsonObj,index) {
         var table = document.getElementById("securities");
         var row = table.insertRow(1);
-        //row.addEventListener("click",function() {document.getElementById("para").innerHTML = jsonObj.display});
-       // row.addEventListener("click",function() {
-        //  window.location.href = "buy_sell.html?&json="+jsonObj});
+       
         row.addEventListener("click",function() {
           window.location.href = "buy_sell.html?&company="+jsonObj.company_name+"&sector="+jsonObj.sector+"&symbol="+jsonObj.symbol+"&isin="+jsonObj.isin});
         row.insertCell(0).innerHTML = index;
