@@ -200,7 +200,7 @@ function Init(){
     
     var clientCode = localStorage.getItem("loginDet");
     console.log("clientcode",typeof(clientCode));
-    var tmp = "http://localhost:8891/getmyorder/";
+    var tmp = "http://localhost:8891/tradeblotter/";
     var fin = (tmp+(clientCode).replace(/"/g,""));
     console.log("done11")
 
@@ -229,82 +229,24 @@ function Init(){
                 var cell5 = row.insertCell(4);
                 var cell6 = row.insertCell(5);
                 var cell7 = row.insertCell(6);
-                var cell8 = row.insertCell(7);
-                var cell9 = row.insertCell(8);
+                
                 cell1.innerHTML = obj.id;
                 cell2.innerHTML = obj.isin;
                 cell3.innerHTML = obj.company_name;
                 cell4.innerHTML = obj.quantity;
                 cell5.innerHTML = obj.direction;
                 cell6.innerHTML = obj.limit_price;
-                cell7.innerHTML = obj.unexecuted;
-                if(obj.lpair.length==0){
+                cell7.innerHTML = obj.lpair[0].value;
+                cnt+=1;
                 
-                    cell8.innerHTML = '0';
-                    cell9.innerHTML = '0';
-                    cnt+=1;
-                }
           
-                for(var j=0; j< obj.lpair.length;j++){
-                    obj1 = obj.lpair[j];
-                    //console.log(obj1)
-        
-                    if(j==0){
-                        console.log("here")
-                        //var cell8 = row.insertCell(7);
-                        ///var cell9 = row.insertCell(8);
-                        //console.log(obj1.quantity,obj1.price)
-                        cell8.innerHTML = obj1.key;
-                        cell9.innerHTML = obj1.value;
-                        
-                        
-                    }
-                    else{
-                        console.log(cnt,j)
-                    
-                        var row = table.insertRow(cnt+j+1);
-                        row.insertCell(0)
-                        row.insertCell(1)
-                        row.insertCell(2)
-                        row.insertCell(3)
-                        row.insertCell(4)
-                        row.insertCell(5)
-                        row.insertCell(6)
-                        
-                        var cell8 = row.insertCell(7);
-                        var cell9 = row.insertCell(8);
-                        
-                        console.log(obj1)
-                        console.log(obj1.key,obj1.value)
-                        cell8.innerHTML = obj1.key;
-                        cell9.innerHTML = obj1.value;
-            
-                        //cnt+=1;
-            
-                    }
-                    //cnt += 1;
-                    
-        
-        
-                }
-                cnt += j;
+                
             }
 
         }
     }
 
-    var xmlhttp2 = new XMLHttpRequest();   // new HttpRequest instance 
-    xmlhttp2.open("GET", "http://localhost:8891/netting",true);
-    xmlhttp2.setRequestHeader("Content-Type", "application/json");
-    xmlhttp2.send();
-    
-    xmlhttp2.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-            var returnText = xmlhttp.responseText;
-            var ele = document.getElementById("here");
-            ele.innerHTML = returnText;
-        }
-    }
+
 
 
 	
