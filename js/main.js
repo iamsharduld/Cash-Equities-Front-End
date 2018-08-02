@@ -91,9 +91,11 @@ Init.prototype.login = function(){
             var returnText = xmlhttp.responseText;
 
 
-            localStorage.setItem("loginDet",JSON.stringify(client_code))
 
-            if(returnText=="success"){
+            if(returnText!="invalid user"){
+                localStorage.setItem("loginDet",JSON.stringify(returnText))
+
+                console.log(returnText)
                 document.location.replace("tws.html");
                 console.log("login success"); 
             }

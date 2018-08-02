@@ -1,7 +1,7 @@
 function Init(){
     console.log("hello");
     
-
+    var cnt=0;
     //TEST CODE START
     /*
     var tmp = [
@@ -196,11 +196,16 @@ function Init(){
     */
     //TEST CODE END
 
-    
 
+    
+    var clientCode = localStorage.getItem("loginDet");
+    console.log("clientcode",typeof(clientCode));
+    var tmp = "http://localhost:8891/getmyorder/";
+    var fin = (tmp+(clientCode).replace(/"/g,""));
+    console.log("done11")
 
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-    xmlhttp.open("GET", "http://localhost:8891/getmyorder/A001",true);
+    xmlhttp.open("GET", fin,true);
     xmlhttp.setRequestHeader("Content-Type", "application/json");
     xmlhttp.send();
     
@@ -226,7 +231,7 @@ function Init(){
                 var cell7 = row.insertCell(6);
                 var cell8 = row.insertCell(7);
                 var cell9 = row.insertCell(8);
-                cell1.innerHTML = obj.order_id;
+                cell1.innerHTML = obj.id;
                 cell2.innerHTML = obj.isin;
                 cell3.innerHTML = obj.company_name;
                 cell4.innerHTML = obj.quantity;
@@ -287,7 +292,19 @@ function Init(){
 
         }
     }
+
+    var xmlhttp2 = new XMLHttpRequest();   // new HttpRequest instance 
+    xmlhttp2.open("GET", "http://localhost:8891/netting",true);
+    xmlhttp2.setRequestHeader("Content-Type", "application/json");
+    xmlhttp2.send();
     
+    xmlhttp2.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var returnText = xmlhttp.responseText;
+            var ele = document.getElementById("here");
+            ele.innerHTML = returnText;
+        }
+    }
 
 
 	

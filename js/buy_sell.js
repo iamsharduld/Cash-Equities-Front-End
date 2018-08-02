@@ -57,7 +57,7 @@ function submitOrder(){
     document.getElementById("para").innerHTML = "hello";
 
     var id = -1;
-    var client_code = "2";
+    var client_code;
     var isin,trade_time,quantity,limit_price;
      
     isin=getParameter("isin");
@@ -66,11 +66,17 @@ function submitOrder(){
     limit_price = document.getElementById("price").value;
     var date = new Date();
     trade_time = date.getHours() +":"+date.getMinutes();
+    client_code = localStorage.getItem("loginDet");
+    var jsonobj=[{id:id,client_code:client_code.replace(/"/g,""),isin:isin,
+           trade_time:trade_time,quantity:quantity,direction:dir_value,limit_price:limit_price}];
+    
+    console.log(jsonobj)
+    console.log(client_code.replace(/"/g,""))
+    document.getElementById("para").innerHTML="h";
     var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("POST", "http://localhost:8891/matchorder",true);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
-        xmlhttp.send(JSON.stringify({id:id,client_code:client_code,isin:isin,
-                trade_time:trade_time,quantity:quantity,direction:dir_value,limit_price:limit_price})); 
+        xmlhttp.send(JSON.stringify(jsonobj)); 
 
 }
 
@@ -96,29 +102,45 @@ function getSecurityOrders(){
         if (this.readyState == 4 && this.status == 200) {
             jsonarr = JSON.parse(this.responseText);
             console.log(jsonarr)
-         
-          for(i=0; i<5;i++){
+         var max;
+		max=Math.max(jsonarr.Sell.length,jsonarr.Buy.length);
+          for(i=0; i<max;i++){
+	
             addRow(jsonarr.Sell[i],jsonarr.Buy[i]);
             //document.getElementById("para").innerHTML = jsonarr[0][0];
          }
         }
-        else
-            document.getElementById("para").innerHTML = "error";
+        //else
+           // document.getElementById("para").innerHTML = "error";
     };
     
 }
 
-function addRow(buy,sell) {
+function addRow(sell,buy) {
     var table = document.getElementById("qwerty");
     var row= table.insertRow(table.rows.length);
+console.log(table.rows.length)
     if(buy!=null){
         row.insertCell(0).innerHTML = buy.quantity;
         row.insertCell(1).innerHTML = buy.price;
     }
+	else
+	{
+row.insertCell(0).innerHTML = "";
+        row.insertCell(1).innerHTML = "";
+
+}
     if(sell!=null){
     row.insertCell(2).innerHTML = sell.price;
     row.insertCell(3).innerHTML = sell.quantity;
     }
+	else
+	{
+		row.insertCell(2).innerHTML = "";
+        	row.insertCell(3).innerHTML = "";
+
+}
+
   //  document.getElementById("securities").innerHTML = jsonObj.id;
 }
 window.onload = function(){
